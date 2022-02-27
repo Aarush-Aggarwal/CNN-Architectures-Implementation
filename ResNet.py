@@ -90,14 +90,12 @@ class ResNet(nn.Module):
         
         return nn.Sequential(*layers)
 
+    
 def ResNet50(img_channels=3, num_classes=100):
     return ResNet(Block, [3, 4, 6, 3], img_channels, num_classes)
-  
-  
-def test():
-    net = ResNet50()
-    x = torch.randn(64, 3, 224, 224)
-    y = net(x).to("cpu")
-    print(y.size())
 
-test()
+def ResNet101(img_channel=3, num_classes=1000):
+    return ResNet(block, [3, 4, 23, 3], img_channel, num_classes)
+
+def ResNet152(img_channel=3, num_classes=1000):
+    return ResNet(block, [3, 8, 36, 3], img_channel, num_classes)
